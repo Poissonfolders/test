@@ -1,4 +1,4 @@
-/* Base styles */
+/* Mise en page de base */
 body {
     margin: 0;
     padding: 0;
@@ -9,7 +9,6 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    height: 100dvh; /* Pour gérer la hauteur mobile plus précisément */
     overflow: hidden;
 }
 
@@ -17,7 +16,6 @@ body {
     position: relative;
     width: 100vw;
     height: 100vh;
-    height: 100dvh;
 }
 
 /* Message d'orientation mobile */
@@ -26,8 +24,6 @@ body {
     position: fixed;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
     width: 100%;
     height: 100%;
     background-color: black;
@@ -38,26 +34,9 @@ body {
     text-align: center;
     padding: 20px;
     font-family: 'Courier New', monospace;
-    box-sizing: border-box;
 }
 
-/* Vidéos */
-.video-container {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-}
-
-video {
-    width: 100vw;
-    height: 100vh;
-    height: 100dvh;
-    object-fit: cover;
-    display: block;
-}
-
-/* Croix cliquable */
+/* Croix cliquable - Position et taille ajustées */
 .cross {
     position: fixed;
     top: 20px;
@@ -94,7 +73,6 @@ video {
     font-family: 'Courier New', monospace;
     z-index: 1001;
     overflow-y: auto;
-    box-sizing: border-box;
 }
 
 #codeLines {
@@ -127,13 +105,25 @@ video {
     line-height: 1.5;
 }
 
+#refreshBtn, #alternateRefreshBtn {
+    margin-bottom: 20px;
+}
+
+/* Les 4 vidéos */
+video {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    display: block;
+}
+
 /* Boîte "terminal" */
 #terminal {
     position: absolute;
     bottom: 10%;
     left: 20%;
     right: 20%;
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.6);
     border: 2px solid white;
     padding: 10px 15px;
     font-size: 16px;
@@ -151,7 +141,7 @@ video {
     bottom: 10%;
     left: 20%;
     right: 20%;
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.6);
     border: 2px solid white;
     padding: 10px 15px;
     font-size: 16px;
@@ -177,11 +167,6 @@ p {
     margin: 10px 0 5px 0;
     opacity: 0;
     transition: opacity 0.5s ease;
-}
-
-#choices {
-    max-height: 100%;
-    overflow-y: auto;
 }
 
 #choices p {
@@ -219,14 +204,19 @@ p {
 
 /* Adaptations mobiles */
 @media only screen and (max-width: 768px) {
-    /* Ajustement des vidéos pour mobile */
-    .video-container {
-        height: 100dvh;
-    }
-    
-    .video-container video {
-        height: 120dvh; /* Augmenté pour éviter les bords noirs */
-        transform: translateY(-40%); /* Décalage augmenté pour masquer plus le ciel */
+    /* Position des vidéos sur mobile */
+    video {
+        width: 100vw;
+        height: 100vh;
+        height: -webkit-fill-available;
+        object-fit: cover;
+        display: block;
+        position: fixed;
+        left: 0;
+        /* Décaler la vidéo vers le haut pour cacher le ciel */
+        top: -20%;
+        /* Augmenter la taille pour compenser le décalage */
+        height: 110%;
     }
     
     /* Terminal scrollable sur mobile */
@@ -246,25 +236,18 @@ p {
         scrollbar-width: thin;
         scrollbar-color: #00ff00 rgba(0, 255, 0, 0.1);
     }
-    
+
     #terminal #choices::-webkit-scrollbar {
         width: 6px;
     }
-    
+
     #terminal #choices::-webkit-scrollbar-track {
         background: rgba(0, 255, 0, 0.1);
     }
-    
+
     #terminal #choices::-webkit-scrollbar-thumb {
         background-color: #00ff00;
         border-radius: 3px;
-    }
-    
-    /* Ajustement de la croix sur mobile */
-    .cross {
-        font-size: 24px;
-        top: 10px;
-        right: 15px;
     }
     
     /* Ajustement du dialogue final sur mobile */
@@ -276,18 +259,17 @@ p {
         overflow-y: auto;
         -webkit-overflow-scrolling: touch;
     }
-
+    
     /* Adaptation de la taille du texte pour mobile */
     #terminal, #finalDialog, #kallimaDialog {
         font-size: 14px;
     }
 
-    /* Assure que les choix sont scrollables sur mobile */
-    #choices {
-        max-height: 25vh;
-        overflow-y: auto;
-        -webkit-overflow-scrolling: touch;
-        padding-right: 5px;
+    /* Ajustement de la croix sur mobile */
+    .cross {
+        font-size: 24px;
+        top: 15px;
+        right: 20px;
     }
 }
 
