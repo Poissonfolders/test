@@ -8,18 +8,18 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100dvh; /* Utilisation de dvh pour une meilleure compatibilité */
-    overflow: hidden; /* Évite le scrolling indésirable */
-}
-
-.container {
+    height: 100vh;
+    overflow: hidden;
+  }
+  
+  .container {
     position: relative;
     width: 100vw;
-    height: 100dvh; /* Adapte la hauteur au dynamic viewport */
-}
-
-/* Message d'orientation mobile */
-.orientation-message {
+    height: 100vh;
+  }
+  
+  /* Message d'orientation mobile */
+  .orientation-message {
     display: none;
     position: fixed;
     top: 0;
@@ -34,10 +34,10 @@ body {
     text-align: center;
     padding: 20px;
     font-family: 'Courier New', monospace;
-}
-
-/* Croix cliquable */
-.cross {
+  }
+  
+  /* Croix cliquable */
+  .cross {
     position: fixed;
     top: 20px;
     right: 30px;
@@ -49,19 +49,19 @@ body {
     font-weight: normal;
     padding: 5px;
     opacity: 0;
-}
-
-.cross.fade-in {
+  }
+  
+  .cross.fade-in {
     opacity: 1;
-}
-
-.cross:hover {
+  }
+  
+  .cross:hover {
     color: rgba(255, 255, 255, 0.8);
     transform: scale(1.1);
-}
-
-/* Terminal pour le dialogue */
-#terminalDialog {
+  }
+  
+  /* Terminal pour le dialogue avec Kamilla */
+  #terminalDialog {
     position: fixed;
     top: 0;
     left: 0;
@@ -73,23 +73,23 @@ body {
     font-family: 'Courier New', monospace;
     z-index: 1001;
     overflow-y: auto;
-}
-
-#codeLines {
+  }
+  
+  #codeLines {
     margin-bottom: 20px;
-}
-
-#cursor {
+  }
+  
+  #cursor {
     display: inline-block;
     animation: blink 1s infinite;
-}
-
-@keyframes blink {
+  }
+  
+  @keyframes blink {
     0%, 100% { opacity: 1; }
     50% { opacity: 0; }
-}
-
-#userInput {
+  }
+  
+  #userInput {
     background: none;
     border: none;
     color: #00ff00;
@@ -98,21 +98,27 @@ body {
     width: 100%;
     outline: none;
     margin-top: 20px;
-}
-
-/* Les vidéos */
-video {
-    position: fixed;
-    top: -20%; /* Cache une partie supérieure de la vidéo */
-    left: 0;
-    width: 100vw; /* Largeur totale de l'écran */
-    height: 120dvh; /* Utilisation du dynamic viewport height */
-    object-fit: cover; /* Recadre la vidéo pour qu'elle reste esthétique */
+  }
+  
+  #kallimaDialog {
+    margin-top: 20px;
+    line-height: 1.5;
+  }
+  
+  #refreshBtn, #alternateRefreshBtn {
+    margin-bottom: 20px;
+  }
+  
+  /* Les 4 vidéos */
+  video {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
     display: block;
-}
-
-/* Boîte terminal */
-#terminal {
+  }
+  
+  /* Boîte "terminal" */
+  #terminal {
     position: absolute;
     bottom: 10%;
     left: 20%;
@@ -127,10 +133,10 @@ video {
     opacity: 0;
     transition: opacity 1s ease;
     z-index: 2;
-}
-
-/* Boîte finale */
-#finalDialog {
+  }
+  
+  /* Boîte finale */
+  #finalDialog {
     position: absolute;
     bottom: 10%;
     left: 20%;
@@ -145,75 +151,136 @@ video {
     opacity: 0;
     transition: opacity 1s ease;
     z-index: 2;
-}
-
-.hidden {
+  }
+  
+  .hidden {
     display: none !important;
-}
-
-p {
+  }
+  
+  p {
     margin: 0;
     padding: 0;
-}
-
-/* Adaptations mobiles */
-@media only screen and (max-width: 768px) {
+  }
+  
+  #peacefulIntro {
+    font-size: 16px;
+    margin: 10px 0 5px 0;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+  
+  #choices p {
+    margin: 10px 0;
+    line-height: 1.5;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    cursor: pointer;
+  }
+  
+  #choices p:hover {
+    text-decoration: underline;
+  }
+  
+  #refreshBtn.hidden, #alternateRefreshBtn.hidden {
+    display: none;
+  }
+  
+  #refreshBtn, #alternateRefreshBtn {
+    background: none;
+    color: #00ff00;
+    border: 1px solid #00ff00;
+    padding: 8px 12px;
+    font-family: 'Courier New', monospace;
+    cursor: pointer;
+    align-self: flex-start;
+    margin-top: 10px;
+  }
+  
+  #refreshBtn:hover, #alternateRefreshBtn:hover {
+    background: #00ff00;
+    color: black;
+  }
+  
+  /* Adaptations mobiles */
+  @media only screen and (max-width: 768px) {
+    /* Position des vidéos sur mobile */
     video {
-        position: fixed;
-        top: -20%; /* Décale vers le haut pour cacher le haut de la vidéo */
-        left: 0;
-        width: 100vw; /* Largeur totale de l'écran */
-        height: 120dvh; /* Augmente la hauteur pour compenser */
-        object-fit: cover; /* Maintient un bon recadrage */
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      display: block;
+      position: fixed;
+      left: 0;
+      top: 0;
+      transform: translateY(-10%); /* Ajuster cette valeur pour remonter la vidéo */
     }
-
+  
+    /* Ajustement de la croix sur mobile */
     .cross {
-        font-size: 24px;
-        top: 15px;
-        right: 20px;
+      font-size: 24px;
+      top: 15px;
+      right: 20px;
     }
-
+  
+    /* Terminal scrollable sur mobile */
     #terminal {
-        position: fixed;
-        bottom: 20%;
-        left: 5%;
-        right: 5%;
-        max-height: 30vh;
-        overflow-y: auto;
-        -webkit-overflow-scrolling: touch;
-        z-index: 1000;
+      position: fixed;
+      bottom: 20%;
+      left: 5%;
+      right: 5%;
+      max-height: 30vh;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      z-index: 1000;
     }
-
+  
     #terminal #choices {
-        max-height: 20vh;
-        overflow-y: auto;
-        -webkit-overflow-scrolling: touch;
+      max-height: 20vh;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: thin;
+      scrollbar-color: #00ff00 rgba(0, 255, 0, 0.1);
     }
-
+  
+    #terminal #choices::-webkit-scrollbar {
+      width: 6px;
+    }
+  
+    #terminal #choices::-webkit-scrollbar-track {
+      background: rgba(0, 255, 0, 0.1);
+    }
+  
+    #terminal #choices::-webkit-scrollbar-thumb {
+      background-color: #00ff00;
+      border-radius: 3px;
+    }
+  
+    /* Ajustement du dialogue final sur mobile */
     #finalDialog {
-        position: fixed;
-        bottom: 20%;
-        left: 5%;
-        right: 5%;
-        max-height: 30vh;
-        overflow-y: auto;
-        -webkit-overflow-scrolling: touch;
-        z-index: 1000;
+      position: fixed;
+      bottom: 20%;
+      left: 5%;
+      right: 5%;
+      max-height: 30vh;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      z-index: 1000;
     }
-
+  
+    /* Adaptation de la taille du texte pour mobile */
     #terminal, #finalDialog, #kallimaDialog {
-        font-size: 14px;
+      font-size: 14px;
     }
-}
-
-/* Gestion de l'orientation portrait */
-@media screen and (orientation: portrait) and (max-width: 768px) {
+  }
+  
+  /* Gestion de l'orientation */
+  @media screen and (orientation: portrait) and (max-width: 768px) {
     .orientation-message {
-        display: flex !important;
+      display: flex !important;
     }
-
+  
     .container > *:not(.orientation-message) {
-        visibility: hidden;
+      visibility: hidden;
     }
-}
-
+  }
