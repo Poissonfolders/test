@@ -6,23 +6,33 @@ const videoPixel = document.getElementById('videoPixel');
 
 // Gestion de l'orientation mobile
 const orientationMessage = document.getElementById('orientationMessage');
+const container = document.querySelector('.container');
 
-function checkOrientation() {
-    if (window.innerWidth <= 768) { // Mobile device
-        if (window.innerHeight > window.innerWidth) { // Portrait mode
-            orientationMessage.classList.remove('hidden');
-            document.querySelector('.container').classList.add('portrait-mode');
-        } else { // Landscape mode
-            orientationMessage.classList.add('hidden');
-            document.querySelector('.container').classList.remove('portrait-mode');
+function handleOrientationChange() {
+    // Vérifie si c'est un appareil mobile
+    if (window.matchMedia("(max-width: 768px)").matches) {
+        // Vérifie l'orientation
+        if (window.matchMedia("(orientation: portrait)").matches) {
+            orientationMessage.style.display = 'flex';
+            container.classList.add('portrait-mode');
+        } else {
+            orientationMessage.style.display = 'none';
+            container.classList.remove('portrait-mode');
         }
+    } else {
+        // Sur desktop, on cache toujours le message
+        orientationMessage.style.display = 'none';
+        container.classList.remove('portrait-mode');
     }
 }
 
-// Vérifier l'orientation au chargement et lors du redimensionnement
-window.addEventListener('load', checkOrientation);
-window.addEventListener('resize', checkOrientation);
-window.addEventListener('orientationchange', checkOrientation);
+// Événements d'orientation
+window.addEventListener('load', handleOrientationChange);
+window.addEventListener('resize', handleOrientationChange);
+window.addEventListener('orientationchange', () => {
+    // Petit délai pour laisser le temps au navigateur de mettre à jour les dimensions
+    setTimeout(handleOrientationChange, 100);
+});
 
 // 1) À la fin de Start.mp4, on affiche Fire.mp4 (loop)
 videoStart.addEventListener('ended', () => {
