@@ -16,6 +16,7 @@ body {
     position: relative;
     width: 100vw;
     height: 100vh;
+    overflow: hidden;
 }
 
 /* Message d'orientation mobile */
@@ -73,6 +74,7 @@ body {
     font-family: 'Courier New', monospace;
     z-index: 1001;
     overflow-y: auto;
+    box-sizing: border-box;
 }
 
 #codeLines {
@@ -109,8 +111,15 @@ body {
     margin-bottom: 20px;
 }
 
-/* Les 4 vidéos */
-video {
+/* Configuration des vidéos */
+.video-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.video-container video {
     width: 100vw;
     height: 100vh;
     object-fit: cover;
@@ -123,7 +132,7 @@ video {
     bottom: 10%;
     left: 20%;
     right: 20%;
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.8);
     border: 2px solid white;
     padding: 10px 15px;
     font-size: 16px;
@@ -141,7 +150,7 @@ video {
     bottom: 10%;
     left: 20%;
     right: 20%;
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.8);
     border: 2px solid white;
     padding: 10px 15px;
     font-size: 16px;
@@ -205,18 +214,19 @@ p {
 /* Adaptations mobiles */
 @media only screen and (max-width: 768px) {
     /* Position des vidéos sur mobile */
-    video {
-        width: 100vw;
-        height: 100vh;
-        height: -webkit-fill-available;
-        object-fit: cover;
-        display: block;
+    .video-container {
         position: fixed;
-        left: 0;
-        /* Décaler davantage la vidéo vers le haut pour compenser la barre de navigation */
-        top: -35%;
-        /* Augmenter encore plus la taille pour s'assurer que le bas soit visible */
-        height: 135%;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+    }
+    
+    .video-container video {
+        position: absolute;
+        width: 100vw !important;
+        height: 140vh !important;
+        object-fit: cover !important;
+        top: -30% !important;
     }
 
     /* Ajustement de la croix sur mobile */
