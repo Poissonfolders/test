@@ -214,8 +214,8 @@ p {
     display: block;
     position: fixed;
     left: 0;
-    top: 0;
-    transform: translateY(-10%); /* Ajuster cette valeur pour remonter la vidéo */
+    top: -20%; /* Décaler la vidéo vers le haut */
+    height: 120%; /* Augmenter la hauteur pour s'assurer que le bas soit visible */
   }
 
   /* Ajustement de la croix sur mobile */
