@@ -211,11 +211,12 @@ p {
     width: 100vw;
     height: 100vh;
     object-fit: cover;
+    object-position: center 20%; /* Positionner la vidéo 20% plus haut */
     display: block;
     position: fixed;
     left: 0;
-    top: -20%; /* Décaler la vidéo vers le haut */
-    height: 120%; /* Augmenter la hauteur pour s'assurer que le bas soit visible */
+    top: 0;
+    height: -webkit-fill-available; /* Utiliser toute la hauteur disponible */
   }
 
   /* Ajustement de la croix sur mobile */
