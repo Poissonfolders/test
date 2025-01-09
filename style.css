@@ -8,14 +8,14 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    overflow: hidden;
+    height: 100dvh; /* Utilisation de dvh pour une meilleure compatibilité */
+    overflow: hidden; /* Évite le scrolling indésirable */
 }
 
 .container {
     position: relative;
     width: 100vw;
-    height: 100vh;
+    height: 100dvh; /* Adapte la hauteur au dynamic viewport */
 }
 
 /* Message d'orientation mobile */
@@ -102,9 +102,12 @@ body {
 
 /* Les vidéos */
 video {
-    width: 100vw;
-    height: 100vh;
-    object-fit: cover;
+    position: fixed;
+    top: -20%; /* Cache une partie supérieure de la vidéo */
+    left: 0;
+    width: 100vw; /* Largeur totale de l'écran */
+    height: 120dvh; /* Utilisation du dynamic viewport height */
+    object-fit: cover; /* Recadre la vidéo pour qu'elle reste esthétique */
     display: block;
 }
 
@@ -155,25 +158,21 @@ p {
 
 /* Adaptations mobiles */
 @media only screen and (max-width: 768px) {
-    /* Position des vidéos sur mobile */
     video {
         position: fixed;
-        top: -20%; /* Décale vers le haut pour cacher une partie supérieure */
+        top: -20%; /* Décale vers le haut pour cacher le haut de la vidéo */
         left: 0;
-        width: 100vw; /* Largeur de l'écran */
-        height: 120%; /* Augmente la taille pour s'assurer que le bas est visible */
-        object-fit: cover;
-        display: block;
+        width: 100vw; /* Largeur totale de l'écran */
+        height: 120dvh; /* Augmente la hauteur pour compenser */
+        object-fit: cover; /* Maintient un bon recadrage */
     }
 
-    /* Ajustement de la croix sur mobile */
     .cross {
         font-size: 24px;
         top: 15px;
         right: 20px;
     }
 
-    /* Terminal scrollable sur mobile */
     #terminal {
         position: fixed;
         bottom: 20%;
@@ -184,29 +183,13 @@ p {
         -webkit-overflow-scrolling: touch;
         z-index: 1000;
     }
-    
+
     #terminal #choices {
         max-height: 20vh;
         overflow-y: auto;
         -webkit-overflow-scrolling: touch;
-        scrollbar-width: thin;
-        scrollbar-color: #00ff00 rgba(0, 255, 0, 0.1);
     }
 
-    #terminal #choices::-webkit-scrollbar {
-        width: 6px;
-    }
-
-    #terminal #choices::-webkit-scrollbar-track {
-        background: rgba(0, 255, 0, 0.1);
-    }
-
-    #terminal #choices::-webkit-scrollbar-thumb {
-        background-color: #00ff00;
-        border-radius: 3px;
-    }
-
-    /* Ajustement du dialogue final sur mobile */
     #finalDialog {
         position: fixed;
         bottom: 20%;
@@ -218,19 +201,19 @@ p {
         z-index: 1000;
     }
 
-    /* Adaptation de la taille du texte pour mobile */
     #terminal, #finalDialog, #kallimaDialog {
         font-size: 14px;
     }
 }
 
-/* Gestion de l'orientation */
+/* Gestion de l'orientation portrait */
 @media screen and (orientation: portrait) and (max-width: 768px) {
     .orientation-message {
         display: flex !important;
     }
-    
+
     .container > *:not(.orientation-message) {
         visibility: hidden;
     }
 }
+
