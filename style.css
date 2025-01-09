@@ -214,7 +214,7 @@ p {
         position: fixed;
         left: 0;
         /* Décaler la vidéo vers le haut pour cacher le ciel */
-        top: -20%;
+        top: -40%;
         /* Augmenter la taille pour compenser le décalage */
         height: 100%;
     }
