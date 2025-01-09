@@ -215,7 +215,7 @@ p {
     display: block;
     position: fixed;
     left: 0;
-    top: 0;
+    top: -50;
     height: -webkit-fill-available; /* Utiliser toute la hauteur disponible */
   }
 
