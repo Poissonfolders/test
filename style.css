@@ -216,7 +216,7 @@ p {
         /* Décaler la vidéo vers le haut pour cacher le ciel */
         top: -20%;
         /* Augmenter la taille pour compenser le décalage */
-        height: 110%;
+        height: 100%;
     }
     
     /* Terminal scrollable sur mobile */
