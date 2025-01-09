@@ -36,7 +36,7 @@ body {
     font-family: 'Courier New', monospace;
 }
 
-/* Croix cliquable - Position et taille ajustées */
+/* Croix cliquable */
 .cross {
     position: fixed;
     top: 20px;
@@ -213,20 +213,29 @@ p {
         display: block;
         position: fixed;
         left: 0;
-        /* Décaler la vidéo vers le haut pour cacher le ciel */
-        top: -40%;
-        /* Augmenter la taille pour compenser le décalage */
-        height: 100%;
+        /* Décaler davantage la vidéo vers le haut pour compenser la barre de navigation */
+        top: -35%;
+        /* Augmenter encore plus la taille pour s'assurer que le bas soit visible */
+        height: 135%;
     }
-    
+
+    /* Ajustement de la croix sur mobile */
+    .cross {
+        font-size: 24px;
+        top: 15px;
+        right: 20px;
+    }
+
     /* Terminal scrollable sur mobile */
     #terminal {
-        bottom: 15%;
+        position: fixed;
+        bottom: 20%;
         left: 5%;
         right: 5%;
-        max-height: 35vh;
+        max-height: 30vh;
         overflow-y: auto;
         -webkit-overflow-scrolling: touch;
+        z-index: 1000;
     }
     
     #terminal #choices {
@@ -249,27 +258,22 @@ p {
         background-color: #00ff00;
         border-radius: 3px;
     }
-    
+
     /* Ajustement du dialogue final sur mobile */
     #finalDialog {
-        bottom: 15%;
+        position: fixed;
+        bottom: 20%;
         left: 5%;
         right: 5%;
-        max-height: 35vh;
+        max-height: 30vh;
         overflow-y: auto;
         -webkit-overflow-scrolling: touch;
+        z-index: 1000;
     }
-    
+
     /* Adaptation de la taille du texte pour mobile */
     #terminal, #finalDialog, #kallimaDialog {
         font-size: 14px;
-    }
-
-    /* Ajustement de la croix sur mobile */
-    .cross {
-        font-size: 24px;
-        top: 15px;
-        right: 20px;
     }
 }
 
