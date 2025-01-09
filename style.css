@@ -10,16 +10,42 @@ body {
     align-items: center;
     height: 100vh;
     overflow: hidden;
-    }
-    
-    .container {
+}
+
+.container {
     position: relative;
     width: 100vw;
     height: 100vh;
-    }
-    
-    /* Croix cliquable - Position et taille ajustées */
-    .cross {
+}
+
+/* Message d'orientation mobile */
+.orientation-message {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    color: #00ff00;
+    z-index: 2000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    font-family: 'Courier New', monospace;
+}
+
+/* Container vidéo avec ajustement mobile */
+.video-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+/* Croix cliquable - Position et taille ajustées */
+.cross {
     position: fixed;
     top: 20px;
     right: 30px;
@@ -31,19 +57,19 @@ body {
     font-weight: normal;
     padding: 5px;
     opacity: 0;
-    }
-    
-    .cross.fade-in {
+}
+
+.cross.fade-in {
     opacity: 1;
-    }
-    
-    .cross:hover {
+}
+
+.cross:hover {
     color: rgba(255, 255, 255, 0.8);
     transform: scale(1.1);
-    }
-    
-    /* Terminal pour le dialogue avec Kamilla */
-    #terminalDialog {
+}
+
+/* Terminal pour le dialogue avec Kamilla */
+#terminalDialog {
     position: fixed;
     top: 0;
     left: 0;
@@ -55,23 +81,23 @@ body {
     font-family: 'Courier New', monospace;
     z-index: 1001;
     overflow-y: auto;
-    }
-    
-    #codeLines {
+}
+
+#codeLines {
     margin-bottom: 20px;
-    }
-    
-    #cursor {
+}
+
+#cursor {
     display: inline-block;
     animation: blink 1s infinite;
-    }
-    
-    @keyframes blink {
+}
+
+@keyframes blink {
     0%, 100% { opacity: 1; }
     50% { opacity: 0; }
-    }
-    
-    #userInput {
+}
+
+#userInput {
     background: none;
     border: none;
     color: #00ff00;
@@ -80,27 +106,27 @@ body {
     width: 100%;
     outline: none;
     margin-top: 20px;
-    }
-    
-    #kallimaDialog {
+}
+
+#kallimaDialog {
     margin-top: 20px;
     line-height: 1.5;
-    }
-    
-    #refreshBtn, #alternateRefreshBtn {
+}
+
+#refreshBtn, #alternateRefreshBtn {
     margin-bottom: 20px;
-    }
-    
-    /* Les 4 vidéos */
-    video {
+}
+
+/* Les 4 vidéos */
+video {
     width: 100vw;
     height: 100vh;
     object-fit: cover;
     display: block;
-    }
-    
-    /* Boîte "terminal" */
-    #terminal {
+}
+
+/* Boîte "terminal" */
+#terminal {
     position: absolute;
     bottom: 10%;
     left: 20%;
@@ -115,10 +141,10 @@ body {
     opacity: 0;
     transition: opacity 1s ease;
     z-index: 2;
-    }
-    
-    /* Boîte finale */
-    #finalDialog {
+}
+
+/* Boîte finale */
+#finalDialog {
     position: absolute;
     bottom: 10%;
     left: 20%;
@@ -133,42 +159,42 @@ body {
     opacity: 0;
     transition: opacity 1s ease;
     z-index: 2;
-    }
-    
-    .hidden {
+}
+
+.hidden {
     display: none !important;
-    }
-    
-    p {
+}
+
+p {
     margin: 0;
     padding: 0;
-    }
-    
-    #peacefulIntro {
+}
+
+#peacefulIntro {
     font-size: 16px;
     margin: 10px 0 5px 0;
     opacity: 0;
     transition: opacity 0.5s ease;
-    }
-    
-    #choices p {
+}
+
+#choices p {
     margin: 10px 0;
     line-height: 1.5;
     opacity: 0;
     transform: translateY(10px);
     transition: opacity 0.5s ease, transform 0.5s ease;
     cursor: pointer;
-    }
-    
-    #choices p:hover {
+}
+
+#choices p:hover {
     text-decoration: underline;
-    }
-    
-    #refreshBtn.hidden, #alternateRefreshBtn.hidden {
+}
+
+#refreshBtn.hidden, #alternateRefreshBtn.hidden {
     display: none;
-    }
-    
-    #refreshBtn, #alternateRefreshBtn {
+}
+
+#refreshBtn, #alternateRefreshBtn {
     background: none;
     color: #00ff00;
     border: 1px solid #00ff00;
@@ -177,9 +203,58 @@ body {
     cursor: pointer;
     align-self: flex-start;
     margin-top: 10px;
-    }
-    
-    #refreshBtn:hover, #alternateRefreshBtn:hover {
+}
+
+#refreshBtn:hover, #alternateRefreshBtn:hover {
     background: #00ff00;
     color: black;
+}
+
+/* Adaptations mobiles */
+@media only screen and (max-width: 768px) {
+    /* Ajustement des vidéos pour mobile */
+    .video-container video {
+        transform: translateY(-20%);
     }
+    
+    /* Terminal scrollable sur mobile */
+    #terminal {
+        max-height: 30vh;
+        overflow-y: auto;
+        bottom: 5%;
+        left: 10%;
+        right: 10%;
+    }
+    
+    /* Ajustement de la taille de la croix sur mobile */
+    .cross {
+        font-size: 24px;
+        top: 15px;
+        right: 20px;
+    }
+    
+    /* Ajustement du dialogue final sur mobile */
+    #finalDialog {
+        max-height: 30vh;
+        overflow-y: auto;
+        bottom: 5%;
+        left: 10%;
+        right: 10%;
+    }
+    
+    /* Adaptation de la taille du texte pour mobile */
+    #terminal, #finalDialog, #kallimaDialog {
+        font-size: 14px;
+    }
+}
+
+/* Gestion de l'orientation du device */
+@media screen and (orientation: portrait) and (max-width: 768px) {
+    .orientation-message {
+        display: flex !important;
+    }
+    
+    .container > *:not(.orientation-message) {
+        display: none !important;
+    }
+}

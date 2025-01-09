@@ -1,70 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<title>Kallima</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Kallima</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="container">
-<!-- Croix avec nouvelle classe pour l'animation -->
-<div class="cross fade-in hidden">×</div>
+    <div class="container">
+        <!-- Message d'orientation mobile -->
+        <div id="orientationMessage" class="orientation-message hidden">
+            <p>Please rotate your device to landscape mode for the best experience</p>
+        </div>
 
-<!-- Terminal caché pour le dialogue avec Kamilla -->
-<div id="terminalDialog" class="hidden">
-<div id="codeLines"></div>
-<div id="cursor" class="hidden">_</div>
-<div id="kallimaDialog"></div>
-<input type="text" id="userInput" class="hidden">
-<button id="alternateRefreshBtn" class="hidden">Do as you wish</button>
-</div>
+        <!-- Croix avec nouvelle classe pour l'animation -->
+        <div class="cross fade-in hidden">×</div>
 
-<!-- 1) Start.mp4 (non loop) -->
-<video id="videoStart" autoplay muted>
-<source src="videos/Start.mp4" type="video/mp4">
-Your browser does not support the video tag.
-</video>
+        <!-- Terminal caché pour le dialogue avec Kamilla -->
+        <div id="terminalDialog" class="hidden">
+            <div id="codeLines"></div>
+            <div id="cursor" class="hidden">_</div>
+            <div id="kallimaDialog"></div>
+            <input type="text" id="userInput" class="hidden">
+            <button id="alternateRefreshBtn" class="hidden">Do as you wish</button>
+        </div>
 
-<!-- 2) Fire.mp4 (loop), masquée jusqu'à la fin de Start -->
-<video id="videoLoop" loop muted style="display: none;">
-<source src="videos/Fire.mp4" type="video/mp4">
-Your browser does not support the video tag.
-</video>
+        <!-- Container pour les vidéos avec classe mobile-adjust -->
+        <div class="video-container">
+            <!-- 1) Start.mp4 (non loop) -->
+            <video id="videoStart" autoplay muted playsinline>
+                <source src="videos/Start.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
 
-<!-- 3) Choice.mp4, lancée quand on clique sur un choix -->
-<video id="videoChoice" muted style="display: none;">
-<source src="videos/Choice.mp4" type="video/mp4">
-Your browser does not support the video tag.
-</video>
+            <!-- 2) Fire.mp4 (loop), masquée jusqu'à la fin de Start -->
+            <video id="videoLoop" loop muted playsinline style="display: none;">
+                <source src="videos/Fire.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
 
-<!-- 4) Pixel.mp4 (loop), après la fin de Choice -->
-<video id="videoPixel" loop muted style="display: none;">
-<source src="videos/Pixel.mp4" type="video/mp4">
-Your browser does not support the video tag.
-</video>
+            <!-- 3) Choice.mp4, lancée quand on clique sur un choix -->
+            <video id="videoChoice" muted playsinline style="display: none;">
+                <source src="videos/Choice.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
 
-<!-- Boîte de dialogue initial ("terminal") -->
-<div id="terminal" class="hidden">
-<p id="dynamicText"></p>
-<p id="peacefulIntro" class="hidden">
-But here, where everything is peaceful and at your reach,
-<strong>4</strong> actions are available to you. It is reassuring.
-</p>
-<div id="choices" class="hidden">
-<p>> [1] I know I'm being heard, if I ask for this fire to stop, it will vanish.</p>
-<p>> [2] Cut it down to remove the disturbance that might contaminate the rest of this idyllic landscape.</p>
-<p>> [3] It's so simple: water.</p>
-</div>
-</div>
+            <!-- 4) Pixel.mp4 (loop), après la fin de Choice -->
+            <video id="videoPixel" loop muted playsinline style="display: none;">
+                <source src="videos/Pixel.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
 
-<!-- Boîte de dialogue finale (après Pixel.mp4) -->
-<div id="finalDialog" class="hidden">
-<p id="finalText1"></p>
-<p id="finalText2"></p>
-<button id="refreshBtn" class="hidden">Refresh</button>
-</div>
-</div>
+        <!-- Boîte de dialogue initial ("terminal") -->
+        <div id="terminal" class="hidden">
+            <p id="dynamicText"></p>
+            <p id="peacefulIntro" class="hidden">
+                But here, where everything is peaceful and at your reach,
+                <strong>4</strong> actions are available to you. It is reassuring.
+            </p>
+            <div id="choices" class="hidden">
+                <p>> [1] I know I'm being heard, if I ask for this fire to stop, it will vanish.</p>
+                <p>> [2] Cut it down to remove the disturbance that might contaminate the rest of this idyllic landscape.</p>
+                <p>> [3] It's so simple: water.</p>
+            </div>
+        </div>
 
-<script src="script.js"></script>
+        <!-- Boîte de dialogue finale (après Pixel.mp4) -->
+        <div id="finalDialog" class="hidden">
+            <p id="finalText1"></p>
+            <p id="finalText2"></p>
+            <button id="refreshBtn" class="hidden">Refresh</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
