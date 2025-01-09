@@ -213,7 +213,7 @@ p {
     position: fixed;
     left: 0;
     top: 0;
-    transform: translateY(-10%); /* Ajuster cette valeur pour remonter la vidéo */
+    transform: translateY(-30%); /* Ajuster cette valeur pour remonter la vidéo */
   }
 
   /* Ajustement de la croix sur mobile */
